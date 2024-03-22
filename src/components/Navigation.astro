@@ -1,3 +1,44 @@
-<header class="flex md:[grid-area:header] sticky top-0 bg-blue-500 z-10 w-full h-12">
- <nav></nav>
+---
+import TailwindLogo from "./TailwindLogo.astro";
+import GithubLogo from "./GithubLogo.astro";
+---
+
+<header
+ class="flex md:[grid-area:header] sticky top-0 bg-[#05273d] z-10 w-full"
+>
+ <nav class="grid px-2 w-full my-4">
+  <div class="[grid-area:logo] text-slate-300 grid place-items-center">
+   <a href="/">
+    <TailwindLogo />
+   </a>
+   <span class="mt-2 font-bold">Amazing Tailwind Animations</span>
+  </div>
+  <ul class="flex font-bold gap-8 items-center text-slate-300 justify-end me-4">
+   <li>
+    <a href="/">Home</a>
+   </li>
+   <li>
+    <a href="/customize">Customize</a>
+   </li>
+   <li>
+    <a
+     aria-label="github link"
+     target="_blank"
+     rel="noopener noreferrer"
+     href="https://github.com/juliant908/amazing-tailwind-animations"
+     ><div class="bg-gray-100 rounded-full p-1 text-slate-900">
+      <GithubLogo />
+     </div></a
+    >
+   </li>
+  </ul>
+ </nav>
 </header>
+
+<style>
+ nav {
+  grid-template-columns: 250px 1fr;
+  grid-template-areas: "logo links";
+  gap: 1rem;
+ }
+</style>

@@ -13,7 +13,7 @@ const customizableProperties = Object.entries(theme).slice(2);
   customizableProperties.map(([key, value]) => {
    return (
     <article class="flex flex-col gap-4 w-full" id={formatAnimationTitle(key)}>
-     <h4 class="text-lg font-medium">{formatAnimationTitle(key)}</h4>
+     <h3 class="text-lg font-medium">{formatAnimationTitle(key)}</h3>
      <div class="flex max-h-[300px] overflow-y-scroll flex-col gap-2">
       <table class="text-base">
        <thead>
@@ -26,10 +26,10 @@ const customizableProperties = Object.entries(theme).slice(2);
         {Object.entries(value).map(([valueKey, valueAmount]) => {
          return (
           <tr class="border-b-slate-600/50 border-b-2">
-           <td class="px-2 py-3 text-green-400 font-light">
+           <td class="px-2 py-3 text-green-400 font-normal">
             {formatCSSClass(key)}-{valueKey}
            </td>
-           <td class="text-green-200 font-light">
+           <td class="text-green-200 font-normal">
             {formatClass(key)}: {valueAmount};
            </td>
           </tr>
