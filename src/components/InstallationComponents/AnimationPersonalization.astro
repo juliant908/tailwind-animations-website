@@ -1,0 +1,45 @@
+---
+import theme from "amazing-tailwind-animations/theme";
+import {
+ formatClass,
+ formatAnimationTitle,
+ formatCSSClass,
+} from "../../utils/formatters";
+const customizableProperties = Object.entries(theme).slice(2);
+---
+
+<section class="flex flex-col gap-16 max-w-4xl">
+ {
+  customizableProperties.map(([key, value]) => {
+   return (
+    <article class="flex flex-col gap-4 w-full" id={formatAnimationTitle(key)}>
+     <h4 class="text-lg font-medium">{formatAnimationTitle(key)}</h4>
+     <div class="flex max-h-[300px] overflow-y-scroll flex-col gap-2">
+      <table class="text-base">
+       <thead>
+        <tr class="text-left border-b-slate-500 border-b-2 mb-2 font-normal">
+         <th class="font-normal">Class</th>
+         <th class="font-normal">Properties</th>
+        </tr>
+       </thead>
+       <tbody>
+        {Object.entries(value).map(([valueKey, valueAmount]) => {
+         return (
+          <tr class="border-b-slate-600/50 border-b-2">
+           <td class="px-2 py-3 text-green-400 font-light">
+            {formatCSSClass(key)}-{valueKey}
+           </td>
+           <td class="text-green-200 font-light">
+            {formatClass(key)}: {valueAmount};
+           </td>
+          </tr>
+         );
+        })}
+       </tbody>
+      </table>
+     </div>
+    </article>
+   );
+  })
+ }
+</section>

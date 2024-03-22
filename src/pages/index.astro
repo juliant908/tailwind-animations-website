@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import theme from "amazing-tailwind-animations/theme";
+import AnimationDisplay from "../components/AnimationDisplay.astro";
+import Installation from "../components/Installation.astro";
+import {ANIMATION_CATEGORIES as animations} from "../utils/constants";
+import {groupCategories} from "../utils/groupCategories";
+import AsideMenu from "../components/AsideMenu.astro";
+const {animation} = theme;
+const groupedAnimations = groupCategories(animation, animations);
+---
+
+<Layout
+	title="Amazing tailwind animations | The package you need for your next astro project"
+>
+	<AsideMenu />
+	<main class="md:[grid-area:main] p-4 relative">
+		<header class="max-w-4xl mx-auto text-center">
+			<h1>AMAZING TAILWIND COMPONENTS</h1>
+			<h2>Animations for your next tailwind project!</h2>
+		</header>
+		<Installation />
+		{
+			Object.entries(groupedAnimations).map((category) => (
+				<AnimationDisplay categoryTitle={category[0]} categoryItems={category[1]} />
+			))
+		}
+	</main>
+</Layout>

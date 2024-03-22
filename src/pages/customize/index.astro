@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnimationPersonalization from "../../components/InstallationComponents/AnimationPersonalization.astro";
+import Arbitrary from "../../components/Arbitrary.astro";
+import DetailAsideMenu from "../../components/DetailAsideMenu.astro";
+---
+
+<Layout
+ title="Amazing tailwind animations | The package you need for your next astro project"
+>
+ <DetailAsideMenu />
+ <main class="md:[grid-area:main] px-4 relative">
+  <section class="flex flex-col gap-8 max-w-4xl mx-auto mb-8 py-2">
+   <article>
+    <h2 class="text-xl mb-2 md:text-[24px] font-semibold">
+     Customize your animation properties
+    </h2>
+    <p class="md:text-base">
+     You can use the properties displayed below to customize your animations and
+     control them through utility classes.
+    </p>
+   </article>
+  </section>
+  <section class="flex flex-col gap-8 max-w-4xl mx-auto">
+   <AnimationPersonalization />
+  </section>
+  <section class="flex flex-col gap-8 max-w-4xl mx-auto">
+   <Arbitrary />
+  </section>
+ </main>
+</Layout>
+
+<style></style>

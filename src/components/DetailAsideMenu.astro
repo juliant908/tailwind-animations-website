@@ -1,0 +1,83 @@
+---
+import theme from "amazing-tailwind-animations/theme";
+import {formatAnimationTitle} from "../utils/formatters";
+const customizableProperties = Object.keys(theme).slice(2);
+---
+
+<aside
+ class="md:[grid-area:aside] w-[250px] left-0 text-gray-300 border-r-slate-400/50 border-r hidden md:block md:sticky overflow-y-scroll overflow-x-hidden bg-[#0D1424] py-4"
+>
+ <nav class="grid place-items-center">
+  <ul class="font-light w-full ps-6">
+   <li class="font-semibold">&nbsp; On this page</li>
+   <div class="border-l-slate-100 border-l mt-2">
+    {
+     customizableProperties.map((menuItem) => (
+      <li class="px-4 py-2 md:text-sm">
+       <a
+        class="hover:underline"
+        href={`/customize/#${formatAnimationTitle(menuItem)}`}
+       >
+        {formatAnimationTitle(menuItem)}
+       </a>
+      </li>
+     ))
+    }
+    <li class="text-xs px-4 py-2 md:text-sm mb-4">
+     <a class="hover:underline" href={`/customize/#Arbitrary values`}
+      >Arbitrary values</a
+     >
+    </li>
+   </div>
+  </ul>
+ </nav>
+</aside>
+
+<style>
+ a {
+  display: block;
+ }
+
+ li:last-child {
+  margin-bottom: 1rem;
+ }
+
+ .active-tab {
+  color: #000;
+  display: block;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding-left: 0.25rem;
+  padding-block: 0.25rem;
+  margin-left: -0.25rem;
+  margin-block: -0.25rem;
+  width: 200%;
+ }
+</style>
+
+<script>
+ const $anchors = document.querySelectorAll("a");
+ window.addEventListener("load", function () {
+  const id = location.href.split("#")[1];
+  if (id) {
+   $anchors?.forEach(($anchor) => {
+    $anchor?.classList.remove("active-tab");
+    if ($anchor?.hash?.replace("#", "") === id) {
+     $anchor.classList.add("active-tab");
+    }
+   });
+  }
+ });
+ window.addEventListener("hashchange", function () {
+  const id = location.href.split("#")[1];
+  if (id) {
+   $anchors?.forEach(($anchor) => {
+    $anchor?.classList.remove("active-tab");
+    if ($anchor?.hash?.replace("#", "") === id) {
+     $anchor.classList.add("active-tab");
+    }
+   });
+  }
+ });
+</script>

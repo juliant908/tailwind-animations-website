@@ -1,0 +1,89 @@
+---
+import {ANIMATION_CATEGORIES} from "../utils/constants.js";
+import {formatTitle} from "../utils/formatters";
+---
+
+<aside
+ class="md:[grid-area:aside] w-[250px] left-0 text-gray-300 border-r-slate-400/50 border-r hidden md:block md:sticky overflow-y-scroll overflow-x-hidden py-4 bg-[#0D1424]"
+>
+ <nav class="grid place-items-center">
+  <ul class="font-light w-full ps-6">
+   <li class="font-semibold">Getting started</li>
+   <div class="border-l-slate-100 border-l mt-2">
+    <li class="text-xs px-4 py-2 md:text-sm">
+     <a class="hover:underline" href="/#installation">Installation</a>
+    </li>
+    <li class="text-xs px-4 py-2 md:text-sm">
+     <a class="hover:underline" href="/#setup">Setup</a>
+    </li>
+    <li class="text-xs px-4 py-2 md:text-sm">
+     <a class="hover:underline" href="/#usage">Usage</a>
+    </li>
+    <li class="text-xs px-4 py-2 md:text-sm">
+     <a class="hover:underline" href="/#customize">Customize</a>
+    </li>
+   </div>
+   <li class="font-semibold">Categories</li>
+   <div class="border-l-slate-100 border-l mt-2">
+    {
+     ANIMATION_CATEGORIES.map((menuItem) => (
+      <li class="px-4 py-2 md:text-sm">
+       <a class="hover:underline" href={`/#${menuItem.toLowerCase()}`}>
+        {formatTitle(menuItem)}
+       </a>
+      </li>
+     ))
+    }
+   </div>
+  </ul>
+ </nav>
+</aside>
+
+<style>
+ a {
+  display: block;
+ }
+
+ li:last-child {
+  margin-bottom: 1rem;
+ }
+
+ .active-tab {
+  color: #000;
+  display: block;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding-left: 0.25rem;
+  padding-block: 0.25rem;
+  margin-left: -0.25rem;
+  margin-block: -0.25rem;
+  width: 200%;
+ }
+</style>
+
+<script>
+ const $anchors = document.querySelectorAll("a");
+ window.addEventListener("load", function () {
+  const id = location.href.split("#")[1];
+  if (id) {
+   $anchors?.forEach(($anchor) => {
+    $anchor?.classList.remove("active-tab");
+    if ($anchor?.hash?.replace("#", "") === id) {
+     $anchor.classList.add("active-tab");
+    }
+   });
+  }
+ });
+ window.addEventListener("hashchange", function () {
+  const id = location.href.split("#")[1];
+  if (id) {
+   $anchors?.forEach(($anchor) => {
+    $anchor?.classList.remove("active-tab");
+    if ($anchor?.hash?.replace("#", "") === id) {
+     $anchor.classList.add("active-tab");
+    }
+   });
+  }
+ });
+</script>

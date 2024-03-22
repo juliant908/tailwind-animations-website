@@ -1,0 +1,91 @@
+---
+import Footer from "../components/Footer.astro";
+import "@fontsource-variable/quicksand";
+import Navigation from "../components/Navigation.astro";
+interface Props {
+	title: string;
+}
+
+const {title} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="block relative md:grid min-h-screen w-full bg-[#0D1424]">
+		<div
+			class="inset-0 w-full bg-[#090d18] min-h-[100dvh] absolute bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,212,255,0.1),rgba(9,9,121,0.1))]"
+		>
+		</div>
+		<Navigation />
+		<slot />
+		<Footer />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--nav-height: 3rem;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+
+	html {
+		font-family: "Quicksand Variable", system-ui, sans-serif;
+		background: #090d18;
+		background-size: 224px;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		scroll-behavior: smooth;
+		scroll-padding-top: calc(var(--nav-height) + 1rem);
+		color-scheme: light;
+		color: #d1d5db;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	body {
+		grid-template-areas:
+			"header header"
+			"aside main"
+			"aside footer";
+		grid-template-columns: 250px 1fr;
+		grid-template-rows: auto 1fr auto;
+	}
+	nav {
+		height: var(--nav-height);
+	}
+	aside {
+		height: calc(100vh - var(--nav-height));
+		inset-block: var(--nav-height);
+		inset-inline-start: 0;
+	}
+	p {
+		font-weight: 300;
+	}
+</style>
