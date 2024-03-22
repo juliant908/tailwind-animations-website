@@ -6,27 +6,28 @@ import UseAnimations from "./InstallationComponents/UseAnimations.astro";
 
 <section
  class="flex flex-col gap-8 max-w-4xl mx-auto md:[&>article>p]:text-base [&>article>p]:text-sm"
- id="installation"
 >
  <article>
-  <h2 class="text-xl md:text-3xl font-bold">Installation and usage</h2>
+  <h2 class="text-xl md:text-3xl font-bold" id="installation">
+   Installation and usage
+  </h2>
   <p>
    This plugin works alongside TailwindCSS, which is a prerrequisite for the
    plugin to work, so make sure you have it installed and set up in your
    framework of choice before using the animations displayed below.
   </p>
- </article>
- <article>
   <Install />
  </article>
- <article id="setup">
+ <article>
   <PluginInstall />
  </article>
- <article id="usage">
+ <article>
   <UseAnimations />
  </article>
- <article id="customize" class="mb-12">
-  <h3 class="text-lg md:text-2xl font-semibold">Customize your animations!</h3>
+ <article class="mb-12">
+  <h2 class="text-lg md:text-2xl font-semibold" id="customize">
+   Customize your animations!
+  </h2>
   <p>
    You can adjust your animations duration, fill mode, delay, steps, iteration
    count, range, and much more!

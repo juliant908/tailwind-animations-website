@@ -1,4 +1,9 @@
+---
+const {customFill} = Astro.props;
+---
+
 <svg
+ {...Astro.props}
  class="animate-squeeze animate-iteration-count-infinite animate-duration-1000"
  width="75"
  height="30"
@@ -10,6 +15,24 @@
   fill-rule="evenodd"
   clip-rule="evenodd"
   d="M24.9973 0C11.6617 0 3.33191 6.66398 0 20C4.99786 13.336 10.8367 10.83 17.5005 12.498C21.305 13.4488 24.0282 16.2047 27.0317 19.2667C31.9335 24.2385 37.6041 30 50.0027 30C63.3383 30 71.6681 23.336 75 10C70.0021 16.664 64.1633 19.17 57.4995 17.502C53.695 16.5512 50.9798 13.7873 47.9683 10.7333C43.0585 5.76148 37.3879 0 24.9973 0Z"
-  fill="currentColor"></path>
- <defs> </defs>
+  fill={customFill ? "url(#logo-gradient)" : "currentColor"}></path>
+ <defs>
+  <linearGradient id="logo-gradient" x1="50%" y1="0%" x2="50%" y2="100%">
+   <stop offset="0%" stop-color="#7A5FFF">
+    <animate
+     attributeName="stop-color"
+     values="#7A5FFF; #01FF89; #7A5FFF"
+     dur="2s"
+     repeatCount="indefinite"></animate>
+   </stop>
+
+   <stop offset="100%" stop-color="#01FF89">
+    <animate
+     attributeName="stop-color"
+     values="#01FF89; #7A5FFF; #01FF89"
+     dur="4s"
+     repeatCount="indefinite"></animate>
+   </stop>
+  </linearGradient>
+ </defs>
 </svg>

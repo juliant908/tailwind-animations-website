@@ -5,6 +5,7 @@ import GithubLogo from "./GithubLogo.astro";
 
 <header
  class="flex md:[grid-area:header] sticky top-0 bg-[#05273d] z-10 w-full"
+ id="nav"
 >
  <nav class="grid px-2 w-full my-4">
   <div class="[grid-area:logo] text-slate-300 grid place-items-center">
@@ -13,7 +14,7 @@ import GithubLogo from "./GithubLogo.astro";
    </a>
    <span class="mt-2 font-bold">Amazing Tailwind Animations</span>
   </div>
-  <ul class="flex font-bold gap-8 items-center text-slate-300 justify-end me-4">
+  <ul class="hidden sm:flex font-bold gap-8 items-center text-slate-300 justify-end me-4">
    <li>
     <a href="/">Home</a>
    </li>
@@ -40,5 +41,9 @@ import GithubLogo from "./GithubLogo.astro";
   grid-template-columns: 250px 1fr;
   grid-template-areas: "logo links";
   gap: 1rem;
+  @media screen and (max-width: 640px){
+   grid-template-columns: 1fr;
+   grid-template-areas: "logo";
+  }
  }
 </style>
