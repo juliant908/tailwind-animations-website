@@ -1,15 +1,17 @@
-# AMazing tailwind animations - A plugin for the most famous CSS framework in the world
+# Amazing tailwind animations - A plugin for the most famous CSS framework in the world
 
 ```sh
 npm install amazing-tailwind-animations
 ```
 
-[![Open in Github]](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open in Vercel]](https://tailwind-animations-website.vercel.app/)
+[Open in Github](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[Open in Vercel](https://tailwind-animations-website.vercel.app/)
 
 ## 🚀 Setup
 
-Add the plugin to 
+Add the plugin into your `tailwind.config.mjs`.
+
+Note: if your using CommonJS, make sure to import the plugin with the `require('')` method.
 
 ```sh
 import amazingAnimations from 'amazingAnimations'
