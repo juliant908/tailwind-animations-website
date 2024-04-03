@@ -10,7 +10,7 @@ const customizableProperties = Object.entries(theme).slice(2);
 
 <section class="flex flex-col gap-16 max-w-4xl">
  {
-  customizableProperties.map(([key, value]) => {
+  customizableProperties.sort().map(([key, value]) => {
    return (
     <article class="flex flex-col gap-4 w-full" id={formatAnimationTitle(key)}>
      <h3 class="text-lg font-medium">{formatAnimationTitle(key)}</h3>

@@ -12,7 +12,7 @@ const customizableProperties = Object.keys(theme).slice(2);
    <li class="font-semibold mb-4">Properties</li>
    <div class="">
     {
-     customizableProperties.map((menuItem) => (
+     customizableProperties.sort().map((menuItem) => (
       <li class="border-l-slate-100 border-l px-4 py-2 md:text-sm">
        <a
         class="hover:underline"
@@ -23,7 +23,7 @@ const customizableProperties = Object.keys(theme).slice(2);
       </li>
      ))
     }
-    <li class="text-xs px-4 py-2 md:text-sm mb-4">
+    <li class="border-l-slate-100 border-l text-xs px-4 py-2 md:text-sm mb-4">
      <a class="hover:underline" href={`/customize/#Arbitrary values`}
       >Arbitrary values</a
      >

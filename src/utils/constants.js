@@ -11,5 +11,8 @@ export const ANIMATION_CATEGORIES = [
   'roll',
   'spin',
   'miscellaneous',
-  'background'
+  'background',
+  'show',
+  'leave',
+  'speed'
 ]

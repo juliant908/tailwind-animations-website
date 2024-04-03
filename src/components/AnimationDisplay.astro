@@ -4,58 +4,58 @@ import {formatTitle} from "../utils/formatters";
 const {categoryTitle, categoryItems} = Astro.props;
 ---
 
- <h2
-  id={categoryTitle}
-  class="mb-4 max-w-4xl mx-auto mt-8 font-bold md:text-3xl text-xl"
- >
-  {formatTitle(categoryTitle) + " animations"}
- </h2>
- <section
-  class="max-w-4xl mx-auto mt-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
- >
-  {
-   categoryItems.map((item) => (
-    <article
-     class="cursor-crosshair border-2 border-gray-300 rounded-md hover:border-gray-300/50 overflow-y-hidden transition relative"
-     data-class={item}
-    >
-     <div class="icon-holder absolute top-2 right-2 text-transparent transition">
-      <CopyIcon />
-     </div>
-     <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
-      <span
-       class={`flex h-16 w-16 items-center justify-center rounded-md bg-[linear-gradient(lightgreen,green)]`}
-      />
-      <p class="text-xs md:text-base font-semibold opacity-90 text-white">
-       {item}
-      </p>
-     </div>
-    </article>
-   ))
-  }
- </section>
+<h2
+    id={categoryTitle}
+    class="mb-4 max-w-4xl mx-auto mt-8 font-bold md:text-3xl text-xl"
+>
+    {formatTitle(categoryTitle) + " animations"}
+</h2>
+<section
+    class="max-w-4xl mx-auto mt-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+>
+    {
+        categoryItems.sort().map((item) => (
+            <article
+                class="cursor-crosshair border-2 border-gray-300 rounded-md hover:border-gray-300/50 overflow-hidden transition relative"
+                data-class={item}
+            >
+                <div class="icon-holder absolute top-2 right-2 text-transparent transition">
+                    <CopyIcon />
+                </div>
+                <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+                    <span
+                        class={`flex h-16 w-16 items-center justify-center rounded-md bg-[linear-gradient(lightgreen,green)]`}
+                    />
+                    <p class="text-xs md:text-base font-semibold opacity-90 text-white">
+                        {item}
+                    </p>
+                </div>
+            </article>
+        ))
+    }
+</section>
 
 <script>
- import Toastify from "toastify-js";
+    import Toastify from "toastify-js";
 
- const $articles = document.querySelectorAll("article");
+    const $articles = document.querySelectorAll("article");
 
- $articles.forEach(($article) => {
-  const animationKey = $article.getAttribute("data-class");
-  const animationClass = "animate-" + animationKey;
-  const $box = $article.querySelector("span");
-  $article.addEventListener("mouseenter", () => {
-   $box?.classList.add(animationClass);
-  });
+    $articles.forEach(($article) => {
+        const animationKey = $article.getAttribute("data-class");
+        const animationClass = "animate-" + animationKey;
+        const $box = $article.querySelector("span");
+        $article.addEventListener("mouseenter", () => {
+            $box?.classList.add(animationClass);
+        });
 
-  $article.addEventListener("mouseleave", () => {
-   $box?.classList.remove(animationClass);
-  });
+        $article.addEventListener("mouseleave", () => {
+            $box?.classList.remove(animationClass);
+        });
 
-  $article.addEventListener("click", () => {
-   const $icon = $article.querySelector(".icon-holder");
-   if (!$icon) return;
-   $icon.innerHTML = `
+        $article.addEventListener("click", () => {
+            const $icon = $article.querySelector(".icon-holder");
+            if (!$icon) return;
+            $icon.innerHTML = `
 <svg
  xmlns="http://www.w3.org/2000/svg"
  width="16"
@@ -73,20 +73,20 @@ const {categoryTitle, categoryItems} = Astro.props;
  ></path></svg
 >
    `;
-   navigator.clipboard.writeText(animationClass);
-   Toastify({
-    text: "The class was successfully copied to your clipboard!",
-    duration: 1500,
-    position: "center",
-    style: {
-     background: "rgb(30 41 59)",
-     color: "rgb(209 213 219)",
-     borderRadius: "8px",
-     cursor: "default",
-    },
-   }).showToast();
-   setTimeout(() => {
-    $icon.innerHTML = `
+            navigator.clipboard.writeText(animationClass);
+            Toastify({
+                text: "The class was successfully copied to your clipboard!",
+                duration: 1500,
+                position: "center",
+                style: {
+                    background: "rgb(30 41 59)",
+                    color: "rgb(209 213 219)",
+                    borderRadius: "8px",
+                    cursor: "default",
+                },
+            }).showToast();
+            setTimeout(() => {
+                $icon.innerHTML = `
 <svg
  xmlns="http://www.w3.org/2000/svg"
  width="16"
@@ -105,30 +105,30 @@ const {categoryTitle, categoryItems} = Astro.props;
  ></path></svg
 >
     `;
-   }, 1500);
-  });
- });
+            }, 1500);
+        });
+    });
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"
 ></script>
 
 <style>
- article:hover {
-  div {
-   svg {
-    color: white;
-    transition: color 0.3s;
-   }
-  }
- }
+    article:hover div svg {
+        color: white;
+        transition: color 0.3s;
+    }
 
- article[data-class="background-move"] > div > span {
-  background-size: 300% 300%;
-  background-image: linear-gradient(to bottom, lightgreen, green);
- }
- article[data-class="background-move"] > div:nth-child(2)::after {
-  content: "Make sure to add a background-size property to the element you want to animate (e.g. background-size: 300% 300%;).";
-  font-size: 0.5rem;
-  text-align: center;
- }
+    article[data-class="background-move"] > div > span {
+        transform-origin: top left;
+    }
+
+    article[data-class="background-move"] > div > span {
+        background-size: 300% 300%;
+        background-image: linear-gradient(to bottom, lightgreen, green);
+    }
+    article[data-class="background-move"] > div:nth-child(2)::after {
+        content: "Make sure to add a background-size property to the element you want to animate (e.g. background-size: 300% 300%;).";
+        font-size: 0.5rem;
+        text-align: center;
+    }
 </style>

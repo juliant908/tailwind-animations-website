@@ -19,7 +19,7 @@ const groupedAnimations = groupCategories(animation, animations);
 		<Hero />
 		<Installation />
 		{
-			Object.entries(groupedAnimations).map((category) => (
+			Object.entries(groupedAnimations).sort().map((category) => (
 				<AnimationDisplay categoryTitle={category[0]} categoryItems={category[1]} />
 			))
 		}

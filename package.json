@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/quicksand": "^5.0.17",
-    "amazing-tailwind-animations": "^0.0.3",
+    "amazing-tailwind-animations": "^0.0.6",
     "astro": "^4.5.6",
     "toastify-js": "^1.12.0"
   },

@@ -42,7 +42,7 @@ const START_LINKS = {
   <ul class="font-light w-full ps-6">
    <li class="font-semibold mb-4">Animations</li>
    {
-    ANIMATION_CATEGORIES.map((menuItem) => (
+    ANIMATION_CATEGORIES.sort().map((menuItem) => (
      <li class="border-l-slate-100 border-l px-4 py-2 md:text-sm">
       <a class="hover:underline" href={`/#${menuItem.toLowerCase()}`}>
        {formatTitle(menuItem)}
